@@ -1,0 +1,62 @@
+🪲 BUGLIST – Python Extended (Stand: 2025)
+
+Diese Liste enthält bekannte Probleme, Stolperfallen, Tech-Debt-Hinweise und häufige Fehler in Codebases. Ziel: Erkennen, Klassifizieren, Auflösen.
+
+───────────────────────────────────────────────
+🔥 Kategorie: Runtime Errors
+───────────────────────────────────────────────
+• [ ] Unbehandelte Exceptions (ValueError, KeyError, TypeError)
+• [ ] Division by Zero in dynamischen Berechnungen
+• [ ] `NoneType`-Fehler bei verschachtelten Dicts
+• [ ] `AttributeError` bei Objekten nach Refactoring
+
+───────────────────────────────────────────────
+⚙️ Kategorie: Logikfehler
+───────────────────────────────────────────────
+• [ ] Falsche Vergleiche mit `is` statt `==`
+• [ ] Loop-Index zu früh verändert
+• [ ] if-Verzweigungen nie erreicht
+• [ ] Mutables als Default-Parameter
+
+───────────────────────────────────────────────
+📦 Kategorie: Strukturprobleme
+───────────────────────────────────────────────
+• [ ] Zirkuläre Importe bei modularem Aufbau
+• [ ] Business-Logik in der CLI- oder UI-Schicht
+• [ ] Fehlerhafte Paketstruktur (fehlende __init__.py)
+
+───────────────────────────────────────────────
+🛡️ Kategorie: Sicherheitsprobleme
+───────────────────────────────────────────────
+• [ ] Secrets im Klartext (API Keys, Tokens)
+• [ ] `eval()` oder `exec()` ohne Schutz
+• [ ] fehlende Input-Validierung in API-Endpunkten
+
+───────────────────────────────────────────────
+📉 Kategorie: Performance
+───────────────────────────────────────────────
+• [ ] Unerwünschte `for`-Schleifen über große DFs
+• [ ] `list.append()` innerhalb von `pandas.apply()`
+• [ ] `time.sleep()` in produktivem Code
+
+───────────────────────────────────────────────
+🧪 Kategorie: Tests & Coverage
+───────────────────────────────────────────────
+• [ ] Kein Test für Exception-Fälle
+• [ ] Kein Test für Randbedingungen (z. B. leere Inputs)
+• [ ] CI: Tests schlagen lokal fehl, aber auf CI durch
+
+───────────────────────────────────────────────
+📋 Tech-Debt (Altlasten)
+───────────────────────────────────────────────
+• [ ] Alte Funktionen mit TODOs
+• [ ] „temporärer“ Fix aus Vorprojekt
+• [ ] Unbenutzte Imports/Funktionen
+• [ ] „funktioniert, aber keiner weiß warum“-Code
+
+───────────────────────────────────────────────
+🛠️ ToDo / Priorisierung
+───────────────────────────────────────────────
+[ ] JIRA-123 – Refactor UserAuthHandler
+[ ] TASK-99  – Add Logging to ExceptionMiddleware
+[ ] CODE-1   – Coverage auf 90 % bringen

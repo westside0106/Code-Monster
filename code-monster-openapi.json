@@ -1,0 +1,136 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Code-Monster API",
+    "version": "1.0.0",
+    "description": "Linting, Refactoring und Datenschutz-API für Python-Code"
+  },
+  "servers": [
+    {
+      "url": "https://code-monster.fly.dev"
+    }
+  ],
+  "paths": {
+    "/analyze": {
+      "post": {
+        "operationId": "analyzeSimple",
+        "summary": "Einfache Lint-Warnung",
+        "description": "Gibt eine Warnung aus, wenn z. B. 'import os' im Code erkannt wird.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "required": ["code"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analyse-Ergebnis",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "output": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyze_all": {
+      "post": {
+        "operationId": "runFullCodeAnalysis",
+        "summary": "Kombinierte Code-Analyse",
+        "description": "Linting, Sicherheits-Check, Anti-Patterns, Unit-Test-Generierung und Refactoring.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "description": "Python-Code"
+                  }
+                },
+                "required": ["code"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analyse-Ergebnis",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lint": { "type": "string" },
+                    "security_issues": { "type": "array", "items": { "type": "string" } },
+                    "anti_patterns": { "type": "array", "items": { "type": "string" } },
+                    "tests": { "type": "string" },
+                    "refactored_code": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/privacy": {
+      "get": {
+        "operationId": "getPrivacyPolicy",
+        "summary": "Datenschutzerklärung",
+        "description": "HTML-Ausgabe der Datenschutzerklärung.",
+        "responses": {
+          "200": {
+            "description": "HTML-Inhalt",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/terms": {
+      "get": {
+        "operationId": "getTermsOfUse",
+        "summary": "Nutzungsbedingungen",
+        "description": "HTML-Ausgabe der AGB / Terms.",
+        "responses": {
+          "200": {
+            "description": "HTML-Inhalt",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

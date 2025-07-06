@@ -1,0 +1,104 @@
+[build-system]
+requires = ["setuptools>=67.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "code_monster"
+version = "1.0.0"
+description = "Das kompromissloseste Clean-Code Toolkit mit Plugins, Snippets und Best Practices"
+readme = "README_Wissensdatenbank.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Philipp", email = "code@monster.dev" }
+]
+keywords = ["clean code", "refactoring", "snippets", "toolkit", "python", "best practices"]
+classifiers = [
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+dependencies = [
+  "requests",
+  "aiohttp",
+  "pydantic>=2.0",
+  "pytest",
+  "mypy",
+  "black",
+  "ruff",
+  "isort",
+  "coverage",
+  "types-requests"
+]
+
+[project.urls]
+Homepage = "https://github.com/code-monster"
+Documentation = "https://code-monster.dev/docs"
+Repository = "https://github.com/code-monster/core"
+Issues = "https://github.com/code-monster/core/issues"
+
+# Optional: Wenn du Poetry nutzt (sonst ignorieren)
+[tool.poetry]
+name = "code-monster"
+version = "1.0.0"
+description = "Clean Code Tools, Snippets, Standards und Linter-Konfiguration"
+authors = ["Philipp <code@monster.dev>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+aiohttp = "*"
+pydantic = "^2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0"
+black = "^24.0"
+mypy = "*"
+ruff = "*"
+isort = "*"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+skip-string-normalization = true
+
+[tool.ruff]
+select = ["E", "F", "W", "C90", "I"]
+ignore = ["E203", "W503"]
+line-length = 100
+exclude = ["venv", "__pycache__", "tests/fixtures"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+combine_as_imports = true
+
+[tool.mypy]
+python_version = "3.11"
+check_untyped_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+strict_optional = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --cov=."
+testpaths = [
+  "tests"
+]
+
+[tool.coverage.run]
+branch = true
+source = ["src", "code_monster"]
+omit = [
+  "tests/*",
+  "setup.py",
+]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 85

@@ -1,0 +1,6 @@
+fastapi
+httpx
+uvicorn[standard]
+setuptools
+websockets<11.0
+isinstance
