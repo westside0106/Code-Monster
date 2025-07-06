@@ -1,6 +1,6 @@
+
 fastapi
 httpx
-uvicorn[standard]
+uvicorn
 setuptools
 websockets<11.0
-isinstance
