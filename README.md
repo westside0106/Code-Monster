@@ -98,4 +98,4 @@ Du darfst alles nutzen, erweitern oder forken – einfach verlinken ✌️
 ## 📬 Kontakt
 
 Du hast eine Idee oder willst das Monster füttern?  
-📧 [code-monster@layzsshop.com](mailto:code-monster@layzsshop.com)
+📧 [code-monster@layzsshop.com](mailto:philipp@lahn.me)
